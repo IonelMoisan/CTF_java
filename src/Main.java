@@ -59,7 +59,7 @@ public class Main {
         return new SecretKeySpec(data, "AES");
     }
 
-    private static byte[] hex2byte(String inputString) {
+    private static byte[] hex2byte(String inputString) throws InterruptedException {
         if (inputString == null || inputString.length() < 2) {
             return new byte[0];
         }
@@ -70,12 +70,15 @@ public class Main {
             String tmp = inputString.substring(2 * i, 2 * i + 2);
             result[i] = (byte) (Integer.parseInt(tmp, 16) & 0xFF);
         }
+
         return result;
     }
 
     public static void main(String[] args) {
+        String text="50315FC40A9F9F9CB355531B6C171B805922A9E7D4A72F7AA4A74E6ADA5EC68B";
+        String pass = "Th1$!sTh3P@ss<>?";
         System.out.println(
-                decrypt("50315FC40A9F9F9CB355531B6C171B805922A9E7D4A72F7AA4A74E6ADA5EC68B", "Th1$!sTh3P@ss<>?" )
+                decrypt(text,pass)
         );
 
 
